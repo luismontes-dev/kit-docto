@@ -1,0 +1,368 @@
+<title>Kit Doctoralia</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@85,600;85,700;100,400;100,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --paper:#F6F7F5; --paper-2:#EDF0EC; --ink:#182022; --ink-2:#4A5654; --line:#D3D9D5;
+  --accent:#0E6B60; --accent-ink:#FFFFFF; --accent-soft:#DCEFEA;
+  --warn:#9A6A12; --warn-soft:#F6EBD3;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111A1B; --paper-2:#182324; --ink:#E4EBE8; --ink-2:#A3B1AD; --line:#2A3738;
+    --accent:#4FC7B2; --accent-ink:#0B1514; --accent-soft:#16302D;
+    --warn:#E0B25A; --warn-soft:#2E2618;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111A1B; --paper-2:#182324; --ink:#E4EBE8; --ink-2:#A3B1AD; --line:#2A3738;
+  --accent:#4FC7B2; --accent-ink:#0B1514; --accent-soft:#16302D;
+  --warn:#E0B25A; --warn-soft:#2E2618;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;margin:0}
+.wrap{max-width:46rem;margin:0 auto;padding:1.5rem 1.1rem 5rem}
+h1,h2,h3{font-family:var(--display);font-stretch:85%;text-wrap:balance;line-height:1.1;margin:0}
+h1{font-size:2.4rem;font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.55rem;font-weight:700;margin-top:3.2rem;padding-top:1.2rem;border-top:2px solid var(--ink)}
+h3{font-size:1.1rem;font-weight:600;margin-top:1.8rem;color:var(--accent)}
+p{margin:.7rem 0}
+.eyebrow{font-family:var(--display);font-stretch:85%;font-weight:600;text-transform:uppercase;letter-spacing:.09em;font-size:.72rem;color:var(--ink-2)}
+.lede{font-size:1.12rem;color:var(--ink-2);max-width:38rem}
+nav{display:flex;flex-wrap:wrap;gap:.4rem .8rem;margin:1.4rem 0 0;padding:.9rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+nav a{font-family:var(--display);font-stretch:85%;font-weight:600;font-size:.86rem;color:var(--accent);text-decoration:none}
+nav a:hover,nav a:focus-visible{text-decoration:underline;outline:none}
+a{color:var(--accent)}
+code,.term{font-family:var(--mono);font-size:.88em}
+code{background:var(--paper-2);padding:.08em .35em;border-radius:3px}
+pre{background:var(--paper-2);border:1px solid var(--line);padding:.9rem 1rem;overflow-x:auto;font-family:var(--mono);font-size:.85rem;line-height:1.5}
+ul,ol{padding-left:1.3rem}
+li{margin:.35rem 0}
+.tbl{overflow-x:auto;margin:1rem 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem;font-variant-numeric:tabular-nums}
+th,td{text-align:left;vertical-align:top;padding:.55rem .6rem;border-bottom:1px solid var(--line)}
+th{font-family:var(--display);font-stretch:85%;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink-2)}
+.def{display:grid;grid-template-columns:1fr;gap:.25rem .9rem;padding:.9rem 0;border-bottom:1px solid var(--line)}
+.def:last-of-type{border-bottom:none}
+.def .t{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:1.02rem}
+.def .q{margin:0}
+.def .say{margin:.25rem 0 0;padding-left:.8rem;border-left:3px solid var(--accent);font-style:italic}
+.def .say b{font-style:normal;font-family:var(--display);font-stretch:85%;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);margin-right:.4rem}
+.def .lim{margin:.25rem 0 0;padding-left:.8rem;border-left:3px solid var(--warn);color:var(--ink-2);font-size:.95rem}
+.def .lim b{font-style:normal;font-family:var(--display);font-stretch:85%;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--warn);margin-right:.4rem}
+.callout{background:var(--accent-soft);border-left:4px solid var(--accent);padding:.9rem 1rem;margin:1.2rem 0}
+.callout.warn{background:var(--warn-soft);border-left-color:var(--warn)}
+.callout p:first-child{margin-top:0}.callout p:last-child{margin-bottom:0}
+.script{background:var(--paper-2);border:1px solid var(--line);padding:1rem 1.1rem;margin:1rem 0}
+.script .eyebrow{margin-bottom:.4rem;display:block}
+.qa{padding:.9rem 0;border-bottom:1px solid var(--line)}
+.qa:last-of-type{border-bottom:none}
+.qa .q{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:1.02rem;margin:0}
+.qa .trap{font-size:.9rem;color:var(--warn);margin:.2rem 0 .4rem}
+.qa .trap b{font-family:var(--display);font-stretch:85%;font-weight:600;font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;margin-right:.3rem}
+.qa .a{margin:0}
+.plan{list-style:none;padding:0;margin:.6rem 0}
+.plan li{display:grid;grid-template-columns:auto 1fr;gap:.7rem;align-items:start;padding:.6rem 0;border-bottom:1px solid var(--line);margin:0}
+.plan input{width:1.15rem;height:1.15rem;margin-top:.25rem;accent-color:var(--accent)}
+.plan .when{font-family:var(--mono);font-size:.78rem;color:var(--ink-2);display:block}
+.plan label{cursor:pointer}
+.plan input:checked + label{color:var(--ink-2);text-decoration:line-through}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(9.5rem,1fr));gap:.6rem;margin:1rem 0}
+.num{background:var(--paper-2);border:1px solid var(--line);padding:.75rem .85rem}
+.num .v{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:1.5rem;line-height:1;font-variant-numeric:tabular-nums}
+.num .l{font-size:.82rem;color:var(--ink-2);margin-top:.3rem;line-height:1.3}
+.small{font-size:.9rem;color:var(--ink-2)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (min-width:640px){
+  .def{grid-template-columns:11rem 1fr}
+  .def .t{grid-row:span 3}
+}
+@media (prefers-reduced-motion:no-preference){ html{scroll-behavior:smooth} }
+</style>
+
+<div class="wrap">
+  <span class="eyebrow">Entrevista técnica · lunes 14 de septiembre de 2026</span>
+  <h1>Kit Doctoralia</h1>
+  <p class="lede">Lo que necesitas poder explicar sin fingir: tu propio proyecto, el vocabulario de despliegue e IA, los CRM que no has tocado, y las preguntas con trampa. Cada término trae cómo lo dices y dónde termina tu conocimiento. Decir el límite en voz alta es lo que te hace creíble frente a gente técnica.</p>
+
+  <nav aria-label="Secciones">
+    <a href="#plan">Plan del fin de semana</a>
+    <a href="#proyecto">Tu proyecto</a>
+    <a href="#despliegue">Arquitectura y despliegue</a>
+    <a href="#ia">Vocabulario IA</a>
+    <a href="#crm">CRM comparados</a>
+    <a href="#negocio">De idea a resultado</a>
+    <a href="#trampa">Preguntas con trampa</a>
+    <a href="#tuyas">Tus preguntas</a>
+  </nav>
+
+  <h2 id="plan">Plan del fin de semana</h2>
+  <p>Cinco bloques. Cada uno termina en algo que ya hiciste, no en algo que leíste. Se palomean aquí mismo y se quedan palomeados en tu teléfono.</p>
+  <ul class="plan">
+    <li><input type="checkbox" id="p1"><label for="p1"><span class="when">Sábado · 45 min</span>Leer las secciones «Tu proyecto» y «Arquitectura y despliegue» de este kit. Subrayar lo que no entiendas y preguntármelo.</label></li>
+    <li><input type="checkbox" id="p2"><label for="p2"><span class="when">Sábado · 45 min</span>Crear una Gem en gemini.google.com sobre tu propio proceso: «clasificador de mensajes de mi cartera: urgencia y siguiente acción». Cinco ejemplos inventados, cero datos de Odoo. Probarla con dos mensajes nuevos.</label></li>
+    <li><input type="checkbox" id="p3"><label for="p3"><span class="when">Sábado · 90 min conmigo</span>Desplegar de verdad: crear tu cuenta de GitHub (la creas tú), generar una versión del dashboard con datos sintéticos y publicarla en GitHub Pages. Resultado: un link público que abres desde el celular. Es la única forma de que «cómo se despliega» deje de ser teoría.</label></li>
+    <li><input type="checkbox" id="p4"><label for="p4"><span class="when">Domingo · 60 min conmigo</span>Simulacro: siete preguntas del correo de la reclutadora más ocho de la sección «Preguntas con trampa». Respondes como en la llamada, te devuelvo la versión con número y la repregunta.</label></li>
+    <li><input type="checkbox" id="p5"><label for="p5"><span class="when">Domingo · 20 min</span>Releer «Tus preguntas», escoger cuatro, y dormir a las 22:30.</label></li>
+  </ul>
+  <div class="callout warn"><p><b>Lo que no se hace:</b> aprender SQL, leer documentación de Salesforce, memorizar precios de hosting, ver tutoriales de Make o n8n. Si el lunes preguntan por eso, la respuesta honesta está en este kit y vale más que una respuesta fingida.</p></div>
+
+  <h2 id="proyecto">Tu proyecto, explicado como lo diría alguien técnico</h2>
+  <p>Hoy lo cuentas desde el negocio. Falta contarlo desde cómo está construido. Tres versiones: la de 30 segundos, la de 2 minutos, y la arquitectura por si te la piden pieza por pieza.</p>
+
+  <div class="script">
+    <span class="eyebrow">30 segundos</span>
+    <p>«Construí un motor que lee los datos que Odoo ya tiene de cada cuenta, calcula señales contra la propia historia de la cuenta, y con un modelo estadístico asigna una sola acción por cuenta: rescatar, riesgo de downgrade, probable crecimiento, largo plazo o sin acción. Corre sobre nueve carteras, cerca de mil quinientas cuentas vivas, y el resultado es un tablero HTML que se abre sin internet. Está validado con backtest: el 10 % que marca como más riesgoso concentra cinco veces y media más churn que el promedio.»</p>
+  </div>
+
+  <div class="script">
+    <span class="eyebrow">2 minutos, por capas</span>
+    <p><b>Extracción.</b> «Un script en Python se conecta a Odoo por su API, solo lectura, pidiendo columnas por nombre. Nunca bajo datos de contacto. Cada cartera sale a un archivo JSON.»</p>
+    <p><b>Panel cuenta-mes.</b> «Convierto el historial en una tabla donde cada fila es una cuenta en un mes dado, con sus señales de ese momento, y la etiqueta es lo que le pasó después: churn, contracción o expansión. Eso es el dataset de entrenamiento.»</p>
+    <p><b>Señales.</b> «Nada se compara contra un umbral global. Cada cuenta se mide contra su propia línea base de 90 días y por segmento de tamaño. Una cuenta de 50 dólares no se mide con la vara de una de 3,000.»</p>
+    <p><b>Modelo.</b> «Regresión logística con regularización L1, un modelo por desenlace, escrita en Python puro sin librerías porque la regla era no instalar nada en la laptop corporativa. La elegí por interpretable: le puedo decir al CS por qué salió esa cuenta.»</p>
+    <p><b>Validación.</b> «Backtest temporal, entreno con el pasado y pruebo en el futuro. Backtest por cartera, entreno con ocho y pruebo en la novena. Revisión de fuga de datos: nada que solo se sabe hoy entra a entrenar. Y ablación: ninguna variable se queda sin medir el modelo con y sin ella.»</p>
+    <p><b>Salida.</b> «Un HTML con las librerías embebidas, 850 KB, se abre con doble clic. El tablero re-implementa el puntaje en JavaScript, y tengo un script que compara Python contra el tablero cartera por cartera: 1,583 cuentas, cero diferencias.»</p>
+  </div>
+
+  <div class="nums">
+    <div class="num"><div class="v">9</div><div class="l">carteras en el maestro de entrenamiento, 1,456 cuentas vivas puntuadas</div></div>
+    <div class="num"><div class="v">5.5×</div><div class="l">churn en el top 10 % del backtest temporal; contracción 4.3×, expansión 2.7×</div></div>
+    <div class="num"><div class="v">3.7×</div><div class="l">churn en el top 20 % entrenando con 8 carteras y probando en la novena</div></div>
+    <div class="num"><div class="v">0.000</div><div class="l">delta entre Python y el tablero sobre 1,583 cuentas</div></div>
+    <div class="num"><div class="v">6</div><div class="l">bugs destapados por esa comparación, todos supuestos no escritos</div></div>
+    <div class="num"><div class="v">0 %</div><div class="l">de IA en el motor de producción. Ningún dato de cliente tocó un LLM</div></div>
+  </div>
+
+  <h3>Lo que NO está hecho, dicho por ti antes de que lo pregunten</h3>
+  <ul>
+    <li><b>Automatización: cero.</b> Hoy se corre a mano con un comando. El diseño final es ejecución desatendida con el insight llegando a donde el CS ya trabaja, pero no existe todavía.</li>
+    <li><b>Despliegue: ninguno.</b> El tablero se reparte como archivo. Nunca lo he publicado en un servidor. Este fin de semana lo hago por primera vez con datos sintéticos.</li>
+    <li><b>Frescura:</b> los exports son una foto de un día. No se actualizan solos.</li>
+    <li><b>Adopción:</b> lo usan compañeros a los que se los di. No hay medición de adopción ni un caso cerrado que haya nacido del motor.</li>
+  </ul>
+  <div class="callout"><p>Cuando dices esto tú primero, la persona técnica deja de buscar el hueco y empieza a evaluar tu criterio. Es la jugada más fuerte que tienes el lunes.</p></div>
+
+  <h3>Cómo explicas que la IA la construyó contigo</h3>
+  <p>No lo escondas y no lo exageres. La frase: «Lo construí con Claude Code como par de programación. Yo defino qué se mide, qué regla aplica, qué se prueba y qué se descarta; la IA escribe el código y yo lo valido con las pruebas. No sé escribir Python desde cero, sé leerlo y sé decidir qué debe hacer.» Eso es exactamente lo que van a hacer contigo en Doctoralia, y es lo que el puesto describe.</p>
+
+  <h2 id="despliegue">Arquitectura y despliegue</h2>
+  <p>Vocabulario para hablar con alguien que sí ha subido cosas a internet. Cada término trae qué es, cómo lo dices y dónde termina tu experiencia.</p>
+
+  <div class="def"><div class="t">Servidor local vs hosting</div>
+    <p class="q">Tu compu levanta un servidor que solo tú ves en <code>localhost</code>. Hostear es poner el mismo archivo en una computadora en internet con una dirección pública. Lo de tu amigo en AWS es eso.</p>
+    <p class="say"><b>Dilo así</b>Hoy corro en local; para que un equipo lo use hay que hostearlo donde ya viven sus permisos.</p>
+    <p class="lim"><b>Límite</b>He desplegado una vez, con datos sintéticos, en GitHub Pages. (Verdad a partir del sábado.)</p></div>
+
+  <div class="def"><div class="t">Frontend / backend</div>
+    <p class="q">Frontend es lo que se ve y corre en el navegador (HTML, CSS, JavaScript). Backend es lo que corre en un servidor: lógica, base de datos, conexiones a otros sistemas. Tu tablero es puro frontend; tus scripts de Python serían el backend si corrieran en un servidor.</p>
+    <p class="say"><b>Dilo así</b>Mi tablero es frontend puro, por eso se abre offline; el cálculo pesado vive en Python y hoy corre en mi máquina.</p></div>
+
+  <div class="def"><div class="t">Estático vs dinámico</div>
+    <p class="q">Estático: archivos fijos que el servidor entrega tal cual (tu HTML). Dinámico: el servidor genera la página al momento con datos frescos. Estático es gratis y casi imposible de romper; dinámico se necesita cuando los datos cambian solos.</p>
+    <p class="say"><b>Dilo así</b>Empiezo estático porque no se rompe; paso a dinámico cuando la frescura del dato lo justifica.</p></div>
+
+  <div class="def"><div class="t">API y API key</div>
+    <p class="q">La puerta autorizada para que un programa hable con un sistema (Odoo, Salesforce, Gemini). La API key es la credencial que te identifica. Odoo la expone por XML-RPC; la mayoría de los sistemas modernos por REST.</p>
+    <p class="say"><b>Dilo así</b>Me conecto a Odoo por su API en modo lectura con una clave personal; nunca exporto de la interfaz.</p>
+    <p class="lim"><b>Límite</b>Solo he usado la API de Odoo y he probado la de Gemini. Salesforce no.</p></div>
+
+  <div class="def"><div class="t">JSON</div>
+    <p class="q">El formato en que viajan los datos entre sistemas: llaves y valores, legible por humanos. Tus exports por cartera son JSON. Pedirle a un LLM que responda en JSON es lo que permite que un programa use su respuesta.</p></div>
+
+  <div class="def"><div class="t">Base de datos vs archivo</div>
+    <p class="q">Tú trabajas con archivos (JSON, CSV). Una base de datos es lo mismo con un motor encima que permite preguntar con SQL, que varias personas escriban a la vez, y que no se corrompa. Para mil cuentas, archivos bastan; para un equipo con datos vivos, base de datos.</p>
+    <p class="lim"><b>Límite</b>No he montado una base de datos ni escribo SQL. Sé qué le pediría.</p></div>
+
+  <div class="def"><div class="t">Pipeline / ETL</div>
+    <p class="q">Extraer, transformar, cargar. La cadena de pasos que lleva el dato crudo hasta el tablero. Tu motor es un pipeline: extraer de Odoo, construir el panel, puntuar, exportar.</p>
+    <p class="say"><b>Dilo así</b>Cada paso del pipeline es un script separado; cambiar la fuente de datos no rompe el resto.</p></div>
+
+  <div class="def"><div class="t">Automatización / cron</div>
+    <p class="q">Que el pipeline corra solo a una hora fija sin que nadie lo lance. En una máquina se llama cron; en la nube hay servicios equivalentes. Es exactamente tu pendiente número uno.</p></div>
+
+  <div class="def"><div class="t">Credenciales y secretos</div>
+    <p class="q">Las claves nunca van dentro del código ni en un archivo que se comparte. Van en variables de entorno o en un gestor de secretos. Tu README ya lo hace con <code>export GEMINI_API_KEY</code>.</p></div>
+
+  <div class="def"><div class="t">Acceso y permisos</div>
+    <p class="q">Quién puede abrir el tablero. Un link público lo ve cualquiera. Dentro de Google Workspace, el permiso lo da la cuenta corporativa. Regla: dato de cliente o paciente nunca detrás de un link público.</p></div>
+
+  <h3>Dónde se despliega y cuándo</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Opción</th><th>Qué es</th><th>Cuándo la eliges</th><th>Costo</th></tr></thead>
+    <tbody>
+      <tr><td>Archivo local</td><td>Doble clic al HTML. Lo que haces hoy.</td><td>Validar con 3 compañeros.</td><td>0</td></tr>
+      <tr><td>Looker Studio</td><td>Tableros de Google conectados a Sheets o BigQuery, con link.</td><td>Empresa en Workspace, tablero sin lógica propia, cero fricción.</td><td>0</td></tr>
+      <tr><td>Apps Script / Google Sites</td><td>JavaScript dentro de Google; permisos por cuenta corporativa.</td><td>Necesitas lógica y que viva dentro de Workspace.</td><td>0</td></tr>
+      <tr><td>GitHub Pages, Vercel, Netlify</td><td>Hosting de archivos estáticos. Diez minutos.</td><td>Demo pública con datos sintéticos. Nunca datos reales.</td><td>0</td></tr>
+      <tr><td>Streamlit Cloud, Render</td><td>Hospedan una app de Python.</td><td>El tablero necesita cálculo en Python en vivo.</td><td>0 a bajo</td></tr>
+      <tr><td>AWS, GCP, Azure</td><td>Máquinas y servicios completos: base de datos, autenticación, cron.</td><td>Software real con usuarios y datos vivos. Lo de tu amigo.</td><td>Desde ~US$5/mes, más mantenimiento</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="script">
+    <span class="eyebrow">Si preguntan «¿qué hosting es mejor?»</span>
+    <p>«No hay mejor en abstracto. Elijo por tres cosas: dónde ya viven los permisos del equipo, qué tan sensible es el dato, y quién lo mantiene cuando yo no esté. En una empresa sobre Google Workspace empiezo por Looker Studio o Apps Script; algo público solo con datos sintéticos; AWS cuando hay usuarios, base de datos y lógica que justifiquen mantener una máquina.»</p>
+  </div>
+
+  <h3>Lenguajes: cuál para qué</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Lenguaje</th><th>Para qué sirve</th><th>Tu relación con él</th></tr></thead>
+    <tbody>
+      <tr><td>Python</td><td>Datos, cálculo, automatización, conectarse a APIs.</td><td>Todo tu motor. Lo lees, lo diriges, no lo escribes de cero.</td></tr>
+      <tr><td>HTML, CSS, JavaScript</td><td>Lo que se ve en el navegador.</td><td>Tu tablero. Mismo nivel.</td></tr>
+      <tr><td>SQL</td><td>Preguntarle a una base de datos.</td><td>No lo has usado. Es lo primero que aprendes al entrar.</td></tr>
+      <tr><td>Apps Script</td><td>JavaScript dentro de Google Sheets, Gmail, Drive.</td><td>No lo has usado. Es donde aterrizarías en una empresa Google.</td></tr>
+      <tr><td>No-code: Make, n8n, Zapier</td><td>Conectar herramientas con flujos visuales sin programar.</td><td>No los has usado. Sabes qué hacen: «cuando pase X en Salesforce, haz Y».</td></tr>
+    </tbody>
+  </table></div>
+  <div class="script">
+    <span class="eyebrow">Si preguntan «¿por qué Python y no otra cosa?»</span>
+    <p>«Python porque es el estándar para datos y porque la IA lo escribe muy bien, lo que me deja concentrarme en la lógica. Y Python puro sin librerías porque la regla en Odoo era no instalar nada en la laptop corporativa. Si aquí hay Workspace y Salesforce, lo primero que evalúo es si Apps Script o un no-code resuelven el 80 % sin levantar un servidor.»</p>
+  </div>
+
+  <h2 id="ia">Vocabulario IA</h2>
+  <div class="def"><div class="t">LLM</div>
+    <p class="q">Modelo grande de lenguaje: Gemini, Claude, GPT. Predice texto; sirve para leer, clasificar, resumir, redactar y escribir código. No sabe nada de tu empresa hasta que se lo das.</p></div>
+
+  <div class="def"><div class="t">Prompt e instrucción de sistema</div>
+    <p class="q">El prompt es lo que le pides. La instrucción de sistema es el contexto fijo que va antes de cada conversación: quién es, qué reglas sigue, en qué formato responde.</p>
+    <p class="say"><b>Dilo así</b>La instrucción de sistema es la rúbrica; el prompt es el caso.</p></div>
+
+  <div class="def"><div class="t">Gem, GPT, Proyecto</div>
+    <p class="q">Lo mismo con tres nombres: un asistente con instrucción de sistema guardada y, opcionalmente, archivos de referencia. Gem es el de Gemini, GPT el de ChatGPT, Proyecto el de Claude. Sirven para que todo un equipo use la misma tarea igual sin re-explicar.</p>
+    <p class="say"><b>Dilo así</b>Hice una Gem para clasificar mensajes de mi cartera por urgencia y siguiente acción.</p>
+    <p class="lim"><b>Límite</b>Una Gem, para un proceso mío, este fin de semana.</p></div>
+
+  <div class="def"><div class="t">Ventana de contexto y tokens</div>
+    <p class="q">Cuánto texto cabe en una conversación. Se mide en tokens, más o menos tres cuartos de palabra. Determina si puedes meter una transcripción completa o solo un fragmento, y es lo que se cobra en la API.</p></div>
+
+  <div class="def"><div class="t">Chat vs API</div>
+    <p class="q">Chat es la ventana donde escribes. API es la misma inteligencia llamada desde un programa, para procesar mil casos sin que nadie escriba. Las Gems son chat; una automatización real usa API.</p>
+    <p class="say"><b>Dilo así</b>Con Gems estandarizas al equipo; con API automatizas el proceso.</p></div>
+
+  <div class="def"><div class="t">Salida estructurada</div>
+    <p class="q">Pedirle al modelo que responda en JSON con campos fijos, no en prosa. Sin esto no se puede automatizar nada: un programa no puede leer «me parece que es urgente».</p></div>
+
+  <div class="def"><div class="t">RAG</div>
+    <p class="q">Recuperación aumentada: antes de responder, el sistema busca en tus documentos los fragmentos relevantes y se los da al modelo. Es como se hace un asistente que responde con la base de conocimiento de la empresa sin re-entrenar nada.</p>
+    <p class="lim"><b>Límite</b>Lo entiendes, no lo has montado. NotebookLM es RAG empaquetado.</p></div>
+
+  <div class="def"><div class="t">Agente</div>
+    <p class="q">Un LLM que además ejecuta acciones: consulta un sistema, decide el siguiente paso, vuelve a consultar. Claude Code es un agente. Más poder, más riesgo, por eso se les pone sandbox y aprobación humana.</p></div>
+
+  <div class="def"><div class="t">Fine-tuning</div>
+    <p class="q">Re-entrenar el modelo con tus datos. Casi nunca hace falta; instrucciones más RAG resuelven el 95 %. Si lo mencionan, tu respuesta es que no lo necesitarías hasta agotar prompt y RAG.</p></div>
+
+  <div class="def"><div class="t">Alucinación</div>
+    <p class="q">Cuando el modelo inventa con seguridad. Se controla con rúbrica explícita, salida estructurada, ejemplos, y sobre todo midiendo el acuerdo con un humano sobre una muestra antes de escalar.</p>
+    <p class="say"><b>Dilo así</b>No confío en el modelo, confío en la medición del modelo contra un humano.</p></div>
+
+  <div class="def"><div class="t">Evaluación</div>
+    <p class="q">Un conjunto de casos con la respuesta correcta conocida, corridos cada vez que cambias el prompt. Es tu <code>pruebas.py</code> aplicado a IA.</p></div>
+
+  <div class="def"><div class="t">Human-in-the-loop</div>
+    <p class="q">La IA propone, el humano decide. Tu regla dura de que ninguna automatización quita una cuenta de la vista del CS es exactamente esto, y te la pueden preguntar como concepto.</p></div>
+
+  <div class="def"><div class="t">Datos personales y de salud</div>
+    <p class="q">En México la ley de datos personales trata los datos de salud como sensibles: consentimiento reforzado y más obligaciones. Doctoralia toca datos de pacientes y médicos. Nada de eso va a una IA gratuita ni a una cuenta personal; solo herramientas corporativas aprobadas, con datos minimizados o anonimizados.</p>
+    <p class="say"><b>Dilo así</b>En Odoo resolví esto con cero IA en producción y sin datos de contacto en disco; aquí lo primero que preguntaría es qué herramientas de IA están aprobadas para datos de pacientes.</p></div>
+
+  <div class="def"><div class="t">Costo</div>
+    <p class="q">La API se cobra por tokens. Orden de magnitud: procesar unos 5,000 registros cortos al día con un modelo económico cuesta decenas de dólares al mes, no miles. Lo caro es el tiempo de la gente, no el modelo.</p></div>
+
+  <h2 id="crm">CRM comparados</h2>
+  <p>Solo has usado Odoo. No finjas lo contrario: traduce. Todos los CRM tienen los mismos cuatro objetos con nombres distintos, y lo que cambia es para qué empresa están hechos.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Concepto</th><th>Odoo</th><th>HubSpot</th><th>Salesforce</th><th>Zoho</th></tr></thead>
+    <tbody>
+      <tr><td>Empresa</td><td>Contacto (compañía)</td><td>Company</td><td>Account</td><td>Account</td></tr>
+      <tr><td>Persona</td><td>Contacto</td><td>Contact</td><td>Contact / Lead</td><td>Contact / Lead</td></tr>
+      <tr><td>Oportunidad</td><td>Oportunidad en pipeline</td><td>Deal</td><td>Opportunity</td><td>Deal</td></tr>
+      <tr><td>Ticket</td><td>Helpdesk</td><td>Ticket (Service Hub)</td><td>Case</td><td>Ticket (Desk)</td></tr>
+      <tr><td>Actividad</td><td>Actividad / chatter</td><td>Task / Note</td><td>Task / Activity</td><td>Task</td></tr>
+      <tr><td>Automatización</td><td>Acciones automatizadas</td><td>Workflows</td><td>Flow</td><td>Workflow rules</td></tr>
+      <tr><td>Reportes</td><td>Vistas y tableros</td><td>Reports / Dashboards</td><td>Reports / Dashboards</td><td>Analytics</td></tr>
+      <tr><td>Hecho para</td><td>PyMEs que quieren ERP y CRM juntos</td><td>PyMEs y marketing primero; fácil</td><td>Empresas grandes; todo se personaliza, todo cuesta</td><td>PyMEs con presupuesto bajo, todo en uno</td></tr>
+    </tbody>
+  </table></div>
+  <div class="script">
+    <span class="eyebrow">Si preguntan «¿qué CRM manejas?»</span>
+    <p>«Odoo, a fondo, como usuario y por API. HubSpot y Salesforce no los he operado. Sé que los cuatro objetos son los mismos con otros nombres, y lo que me importa de un CRM es si puedo leerlo por API para construir encima. En Salesforce eso son los reports exportables o su API; lo primero que haría es pedir acceso de lectura y mapear campos, que es exactamente lo que hice en Odoo.»</p>
+  </div>
+  <p class="small">Stack que Doctoralia menciona en sus vacantes de 2026: Salesforce como CRM, Talkdesk para telefonía, HAYS como sistema interno, Tableau para tableros, y Make y n8n para automatizaciones. Si suena alguno, ya sabes dónde encaja.</p>
+
+  <h2 id="negocio">De idea a resultado de negocio</h2>
+  <p>Esto sí lo dominas. Solo hay que nombrarlo con las palabras que usa alguien de mejora continua, porque son las que ellos usan.</p>
+  <div class="def"><div class="t">Línea base</div><p class="q">El número antes de tocar nada. Sin línea base no hay mejora, hay opinión.</p></div>
+  <div class="def"><div class="t">Hipótesis</div><p class="q">«Si hago X, el KPI Y se mueve Z en W semanas.» Con número o no es hipótesis.</p></div>
+  <div class="def"><div class="t">Piloto</div><p class="q">Probar en una parte pequeña y comparable antes de escalar. Tu propuesta en Odoo fue 3 a 5 carteras, 90 días, más 2 % sobre cuota.</p></div>
+  <div class="def"><div class="t">Ablación</div><p class="q">Medir con y sin la pieza. Es la única forma de saber qué aporta cada cosa. Tu regla número 8.</p></div>
+  <div class="def"><div class="t">Adopción</div><p class="q">Que la gente lo use sin que la persigas. Se logra llevando el insight a donde ya trabajan y quitando clics, no añadiendo herramientas. Tu playbook.</p></div>
+  <div class="def"><div class="t">ROI de una automatización</div><p class="q">Horas ahorradas por costo de hora, o KPI movido contra la línea base, menos lo que cuesta construir y mantener. Se declara el supuesto de la hora y del tiempo de mantenimiento.</p></div>
+  <div class="def"><div class="t">Definición de éxito</div><p class="q">Qué número, en qué fecha, medido cómo. Es lo que le vas a pedir a la manager en 6 y 12 meses.</p></div>
+
+  <h2 id="trampa">Preguntas con trampa</h2>
+  <p>Las que hace alguien técnico para ver cómo piensas. En cada una va la trampa y la respuesta que te deja bien parado sin inventar.</p>
+
+  <div class="qa"><p class="q">¿Cómo evitas que la IA alucine en un proceso de calidad?</p><p class="trap"><b>Trampa</b>Quieren ver si confías ciegamente en el modelo.</p><p class="a">«No confío en el modelo, mido el modelo. Rúbrica explícita, salida estructurada, y una muestra calificada por humano para medir el acuerdo antes de escalar. La IA marca, el humano decide, hasta que el acuerdo justifique lo contrario.»</p></div>
+
+  <div class="qa"><p class="q">¿Qué pasa con los datos de pacientes?</p><p class="trap"><b>Trampa</b>Es healthtech; si lo minimizas, pierdes.</p><p class="a">«Datos de salud son sensibles por ley. Nada va a una IA gratuita ni a cuentas personales; solo herramientas aprobadas y datos minimizados. En Odoo lo resolví con cero IA en producción y sin datos de contacto en disco. Aquí lo primero que preguntaría es qué está aprobado.»</p></div>
+
+  <div class="qa"><p class="q">¿Sabes SQL?</p><p class="trap"><b>Trampa</b>Detectar si exageras.</p><p class="a">«No formal. Sé qué le pediría a los datos y hoy lo construyo con Python e IA. SQL es lo primero que aprendo al entrar, porque es la puerta a cualquier base.»</p></div>
+
+  <div class="qa"><p class="q">¿Por qué regresión logística y no algo más sofisticado?</p><p class="trap"><b>Trampa</b>Ver si eliges por moda.</p><p class="a">«Pocos churns, miles de filas: una logística gana o empata a cualquier cosa compleja y además se explica. Le puedo decir al CS por qué salió esa cuenta. Un ensamble de árboles no da eso igual de claro.»</p></div>
+
+  <div class="qa"><p class="q">¿Cómo sabes que tu modelo no hace trampa?</p><p class="trap"><b>Trampa</b>Fuga de datos. Es la pregunta que separa a quien entiende de quien copió.</p><p class="a">«Backtest temporal: entreno con el pasado y pruebo en el futuro. Y revisión de fuga: ninguna variable que solo se conoce hoy entra a entrenar, porque el backtest no la cacha y el resultado sale inflado.»</p></div>
+
+  <div class="qa"><p class="q">¿Cuál fue tu peor error técnico?</p><p class="trap"><b>Trampa</b>«Ninguno» te descalifica.</p><p class="a">«Seis bugs el mismo día, todos de la misma clase: un supuesto que nadie había escrito, resuelto distinto en Python y en el tablero. Tres solo aparecían al puntuar una cartera sola, que es el uso real. Desde entonces todo empate y todo supuesto va escrito, y hay un script que compara los dos motores automáticamente.»</p></div>
+
+  <div class="qa"><p class="q">¿Cómo lo desplegarías aquí?</p><p class="trap"><b>Trampa</b>Una respuesta con una sola tecnología revela que no has desplegado.</p><p class="a">«Depende de dónde vive el equipo. Si es Workspace, Looker Studio o Apps Script para cero fricción. Datos reales nunca detrás de un link público. He desplegado una vez, con datos sintéticos, en GitHub Pages; no me voy a vender como alguien que administra servidores.»</p></div>
+
+  <div class="qa"><p class="q">¿Diez ideas y un trimestre: por dónde empiezas?</p><p class="trap"><b>Trampa</b>Ver si priorizas o te emocionas.</p><p class="a">«Impacto en el KPI del equipo por esfuerzo por probabilidad de adopción. Una a la vez, con línea base antes de tocar nada. La primera es la que el equipo ya está pidiendo, aunque no sea la más brillante, porque la adopción está regalada.»</p></div>
+
+  <div class="qa"><p class="q">¿Y si tu automatización se rompe un viernes a las 6?</p><p class="trap"><b>Trampa</b>Diseño para fallar.</p><p class="a">«Se diseña para que romperse no quite nada: el proceso manual sigue vivo, la automatización solo prioriza y etiqueta, nunca elimina. Más una alerta cuando no corre y documentación para que otro la levante.»</p></div>
+
+  <div class="qa"><p class="q">¿Construir o comprar?</p><p class="a">«Si existe, funciona y cuesta menos que mantenerlo, comprar. Construir cuando es específico del proceso o cuando lo que se compra no se integra con lo que ya hay. Diio es un ejemplo de comprar; mi motor, de construir porque nadie lo vende.»</p></div>
+
+  <div class="qa"><p class="q">¿Cómo evitas que el equipo dependa de ti?</p><p class="a">«Documentación que se lee de arriba abajo, scripts que corren solos y un paquete que se mueve de máquina sin romperse. En Odoo el proyecto tiene siete documentos de contexto y pruebas automáticas; alguien puede retomarlo sin mí.»</p></div>
+
+  <div class="qa"><p class="q">¿Qué no automatizarías?</p><p class="a">«Cualquier decisión que quite algo de la vista de una persona, y cualquier conversación sensible con un médico o paciente. La IA prioriza y prepara; la relación la lleva el humano.»</p></div>
+
+  <div class="qa"><p class="q">¿Qué es una Gem y para qué la usarías aquí?</p><p class="a">«Un asistente con instrucciones guardadas para que todo el equipo haga la misma tarea igual. Hice una para clasificar mensajes de mi cartera. Aquí no sé todavía qué procesos tienen; lo primero es mapear cuál les come más tiempo y ahí va la primera.»</p></div>
+
+  <div class="qa"><p class="q">¿Cuánto costaría?</p><p class="a">«El modelo es lo barato: decenas de dólares al mes para miles de registros. Lo caro es el tiempo de la gente y las licencias corporativas que ya tengan. Doy número cuando sepa el volumen y las herramientas aprobadas.»</p></div>
+
+  <div class="qa"><p class="q">Eres comercial. ¿Por qué un puesto de análisis?</p><p class="trap"><b>Trampa</b>Ver si huyes de ventas o corres hacia algo.</p><p class="a">«Porque la combinación es la que escasea. Nueve meses frente a 240 empresas me enseñaron qué duele; el motor me enseñó a medirlo. Aquí la IA sería mi trabajo, no mi tiempo extra.»</p></div>
+
+  <h2 id="tuyas">Tus preguntas</h2>
+  <p>Escoge cuatro. Las primeras tres son las que dan materia prima para la etapa 3.</p>
+  <ol>
+    <li>¿Cuál es el proceso que más tiempo le come al equipo de calidad y al de training hoy?</li>
+    <li>¿Cómo miden calidad y training ahora: qué números, en qué herramienta, con qué frecuencia?</li>
+    <li>¿Qué acceso a datos tendría: Salesforce, exportes, alguien de datos que apoye?</li>
+    <li>¿Qué herramientas de IA están aprobadas para datos de pacientes y médicos?</li>
+    <li>¿Qué es éxito a 6 y 12 meses para este puesto, en número?</li>
+    <li>¿Qué harían diferente si ya tuvieran a alguien dedicado a esto? Esa respuesta es la lista de proyectos.</li>
+    <li>¿Cómo será el business case: brief, datos, tiempo, formato de entrega?</li>
+  </ol>
+  <div class="callout"><p>Entra a evaluar, no a convencer. Ya tienes trabajo en una empresa que crece 42 % al año. Las preguntas de arriba son el ancla para no vender de más.</p></div>
+</div>
+
+<script>
+(function(){
+  var key='kit-doctoralia-plan';
+  var boxes=document.querySelectorAll('.plan input[type=checkbox]');
+  var saved={};
+  try{ saved=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){ saved={}; }
+  boxes.forEach(function(b){
+    if(saved[b.id]) b.checked=true;
+    b.addEventListener('change',function(){
+      saved[b.id]=b.checked;
+      try{ localStorage.setItem(key,JSON.stringify(saved)); }catch(e){}
+    });
+  });
+})();
+</script>
